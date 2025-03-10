@@ -661,10 +661,10 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
+                .nav-links {
                 position: fixed;
                 top: 80px;
-                left: -100%;
+                left: -100%; /* Hide the menu off-screen by default */
                 width: 100%;
                 height: calc(100vh - 80px);
                 background-color: white;
@@ -672,15 +672,16 @@
                 align-items: center;
                 justify-content: center;
                 gap: 2rem;
-                transition: left 0.3s ease;
-            }
+                transition: left 0.3s ease; /* Smooth transition for sliding effect */
+                }
+
+                .nav-links.active {
+                    left: 0; /* Bring the menu into view when active */
+                }
             
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .menu-toggle {
-                display: block;
+                .menu-toggle {
+                    display: block; /* Ensure the toggle icon is visible on mobile */
+                }
             }
 
             .hero {
@@ -1244,5 +1245,22 @@
             </div>
         </div>
     </footer>
+    <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksList = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu on menu icon click
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinksList.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+    </script>
 </body>
 </html>
