@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhay M | UI/UX Designer & Developer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --accent: #7c3aed;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .container {
+            max-width: 1200px; /* Ensure this is wide enough */
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--gray-700);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hero .container {
+            display: flex;
+            width: 100%;
+            align-items: center; /* Vertically center the content and image */
+        }
+        
+        .hero-image {
+            flex: 1; /* Take up 50% of the space */
+            order: 1; /* This places it first (left side) */
+            display: flex;
+            justify-content: center; /* Center the image horizontally within its container */
+        }
+        
+        .hero-content {
+            flex: 1; /* Take up 50% of the space */
+            order: 2; /* This places it second (right side) */
+            padding-left: 2rem; /* Add spacing between image and text */
+        }
+        
+        /* For mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero .container {
+                flex-direction: column; /* Stack elements on small screens */
+            }
+            
+            .hero-content {
+                order: 1; /* Content first on mobile */
+                padding-left: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-image {
+                order: 2; /* Image second on mobile */
+            }
+        }
+        
+        .hero-content {
+            flex: 1; /* Take up 50% of the space */
+            padding-left: 2rem; /* Add spacing between image and text */
+            /* background-color: lightgreen; */ /* Uncomment for debugging */
+            order: 2; /* This places it second (right side) */
+        }
+        .hero-image img {
+            max-width: 100%; /* Ensure the image doesn't exceed its container */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .pre-title {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            max-width: 80%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .section-subtitle {
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .project-image {
+            height: 200px;
+            width: 100%;
+            background-color: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tag {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--gray-200);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            z-index: 1;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-organization {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .education {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .edu-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .edu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .edu-year {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-school {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .edu-details {
+            margin-top: 1rem;
+        }
+        
+        .edu-details ul {
+            list-style: none;
+        }
+        
+        .edu-details li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .edu-details li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5rem;
+        }
+        
+        .certs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .cert-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cert-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-issuer {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-date {
+            color: var(--gray-700);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--gray-100);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .contact-item h4 {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--gray-700);
+        }
+        
+        .contact-item p {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.375rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+        }
+        
+        footer {
+            background-color: var(--gray-800);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-icon {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            color: var(--gray-300);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 4rem 0;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-top: 3rem;
+            }
+            
+            .hero-subtitle {
+                max-width: 100%;
+            }
+            
+            .contact {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column; /* Stack content and image vertically */
+                text-align: center; /* Center-align text */
+                padding: 4rem 0; /* Adjust padding */
+            }
+        
+            .hero-content {
+                padding-right: 0; /* Remove right padding */
+                margin-bottom: 2rem; /* Add spacing between text and image */
+            }
+        
+            .hero-image {
+                justify-content: center; /* Center-align image */
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            
+            .education {
+                grid-template-columns: 1fr;
+            }
+            
+            .edu-image {
+                display: block;
+                margin: 10px 0; /* Adds some space above and below the image */
+                border-radius: 5px; /* Optional: adds rounded corners */
+                max-width: 100%; /* Makes the image responsive */
+                height: auto; /* Maintains aspect ratio */
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Abhay<span>M</span></div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <div class="pre-title">UI/UX Designer</div>
+                <h1>Hello, I'm <span>Abhay M</span></h1>
+                <p class="hero-subtitle">A passionate Electronics & Communication Engineering student with expertise in UI/UX design, web development, and embedded systems.</p>
+                <div>
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="#projects" class="btn btn-outline">View Projects</a>
+                    <a href="resume.pdf" class="btn btn-outline" target="_blank">View Resume</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="ak.png" alt="Abhay M">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about-detail">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">My journey in technology and design</p>
+            
+            <p>I am a dedicated Electronics and Communication Engineering (ECE) student at the College of Engineering Thalassery, passionate about technology, innovation, and design. With a keen interest in UI/UX design, web development, and digital image processing , I constantly push my boundaries to create user-friendly experiences and impactful projects.</p>
+            <br>
+            <p>My journey has been marked by active involvement in IEEE, participation in hackathons, leading design initiatives, and working on real-world projects. I am a strong advocate for continuous learning, collaboration, and problem-solving, always striving to refine my technical and creative skills.</p>
+        </div>
+    </section>
+
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">Specialized in UI/UX design, frontend development, and electronics</p>
+            
+            <div class="skills">
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">UI/UX Design</h3>
+                    <ul class="skill-list">
+                        <li>Figma (90% Proficiency)</li>
+                        <li>Wireframing</li>
+                        <li>Prototyping</li>
+                        <li>User Research</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML (55%)</li>
+                        <li>CSS (Advanced)</li>
+                        <li>Bootstrap</li>
+                        <li>Basic JavaScript</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10h-4V4h4"></path>
+                            <path d="M14 10L21 3"></path>
+                            <path d="M3 21l9-9"></path>
+                            <path d="M8 16l-5 5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Programming & Tools</h3>
+                    <ul class="skill-list">
+                        <li>Python (Basic)</li>
+                        <li>MATLAB</li>
+                        <li>Git & GitHub</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 3v12"></path>
+                            <path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            <path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            <path d="M15 6a9 9 0 0 0-9 9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Embedded Systems</h3>
+                    <ul class="skill-list">
+                        <li>Raspberry Pi</li>
+                        <li>Sensor Integration</li>
+                        <li>Digital Circuits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Check out some of my recent work</p>
+            
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="rasp banner.png" alt="AI Face Detection">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Face Detection Attendance System</h3>
+                        <p>An automated face recognition system using Raspberry Pi that enhances attendance tracking for educational institutions and workplaces.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Raspberry Pi</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <a href="https://www.figma.com/proto/fyFErKqjyS7S6IuT3VTlML/..........WE%3E%3E%3E%3E%3E?page-id=1%3A2&node-id=453-1472&viewport=-3628%2C-2013%2C0.1&t=D2p2s4Vvjkutyul0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=453%3A1472&show-proto-sidebar=1" target="_blank" class="project-card">
+                        <div class="project-image">
+                            <img src="Velocart Banner.png" alt="VeloCart App">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">VeloCart - UI/UX Payment App</h3>
+                            <p>An intuitive and seamless e-commerce payment experience with mid-fidelity and high-fidelity prototypes created using Figma.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">UI/UX</span>
+                                <span class="project-tag">Figma</span>
+                                <span class="project-tag">Prototyping</span>
+                                <span class="project-tag">E-commerce</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-card">
+                    <a href="https://www.figma.com/proto/fyFErKqjyS7S6IuT3VTlML/..........WE%3E%3E%3E%3E%3E?page-id=1%3A2&node-id=1109-2069&viewport=-3628%2C-2013%2C0.1&t=D2p2s4Vvjkutyul0-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1109%3A2069" target="_blank" class="project-card">
+                        <div class="project-image">
+                            <img src="apmax.png" alt="Responsive Website">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title"> AirPods Max Micro-Interaction UI Design</h3>
+                            <p>Designed an interactive micro-animation for AirPods Max to enhance user experience and engagement.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Figma</span>
+                                <span class="project-tag">Responsive</span>
+                                <span class="project-tag">prototyping tools</span>
+                                <span class="project-tag">Figma’s smart animate</span>  
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">My academic journey and achievements</p>
+            
+            <div class="education">
+                <div class="edu-card">
+                    <img src="COET.png" alt="College image" width="300" height="200" class="edu-image">
+                    
+                    <div class="edu-year">2022 - Present</div>
+                    <h3 class="edu-degree">
+                        <a href="https://cethalassery.ac.in/" target="_blank">
+                            Bachelor of Technology (B.Tech) in Electronics & Communication Engineering
+                        </a>
+                    </h3>
+                    <p class="edu-school">College of Engineering Thalassery, Kannur, Kerala, India</p>
+                    <div class="edu-details">
+                        <ul>
+                            <li>CGPA: 7.0 (up to the 5th semester)</li>
+                            <li>Strong foundation in circuit design, embedded systems, and digital signal processing (DSP)</li>
+                            <li>Hands-on experience with Raspberry Pi, MATLAB, and Python</li>
+                            <li>Active participation in IEEE events, hackathons, and workshops</li>
+                        </ul>
+                    </div>
+                </div>       
+                <div class="edu-card">
+                    <img src="AKG.jpg" alt="School image" width="300" height="200" class="edu-image">
+                    <div class="edu-year">2020 - 2022</div>
+                    <h3 class="edu-degree">Higher Secondary Education (BioScience)</h3>
+                    <p class="edu-school">Peralassery AKG Smarakha Govt Higher Secondary School, Kannur, Kerala, India</p>
+                    
+                    <div class="edu-details">
+                        <ul>
+                            <li>Developed a passion for learning and Designing</li>
+                            <li>Excelled in math and problem-solving</li>
+                            <li>Studied Biology science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <p class="section-subtitle">Recognitions and milestones in my journey</p>
+            
+            <div class="certs">
+                <div class="cert-card">
+                    <h3 class="cert-title">AWS APAC - Solutions Architecture Job Simulation</h3>
+                    <p class="cert-issuer">Forage (Issued Feb 2025)</p>
+                    <p class="cert-date">Gained hands-on experience in cloud architecture and AWS services</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_3r9oHQ73xcQaBWaia_1740641355894_completion_certificate.pdf" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">Tata Group - Cybersecurity Analyst Job Simulation</h3>
+                    <p class="cert-issuer">Forage (Issued Feb 2025)</p>
+                    <p class="cert-date">Explored cybersecurity strategies, risk assessment, and data protection</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_3r9oHQ73xcQaBWaia_1740648805383_completion_certificate.pdf" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">Be10x AI Workshop</h3>
+                    <p class="cert-issuer">Issued Oct 2024</p>
+                    <p class="cert-date">Explored AI tools and automation techniques for productivity</p>
+                    <a href="https://verify.be10x.ai/certificate/9318e7f9-0234-4ea4-9390-efad88624b8b97072" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">10 Days UI/UX Launch Pad</h3>
+                    <p class="cert-issuer">Shareinfo (Issued Nov 11, 2024)</p>
+                    <p class="cert-date">Mastered UI/UX principles, design thinking, and prototyping</p>
+                    <a href="https://www.linkedin.com/posts/abhay-m-98710b287_uiuxdesign-userexperience-designthinking-activity-7300150337791766528-nS4b?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEWbC7cBfgtIK_IbFg7C9bpnQ5R5JoBAg9M" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">Insights into Robotics</h3>
+                    <p class="cert-issuer">Eightplanes (Issued Oct 8, 2024)</p>
+                    <p class="cert-date">Learned about robotics applications and automation systems</p>
+                    <a href="https://www.linkedin.com/posts/abhay-m-98710b287_robotics-workshop-learning-activity-7256935245357162496-WBe2?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEWbC7cBfgtIK_IbFg7C9bpnQ5R5JoBAg9M" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">Industrial Visit - Renewable Resource Center</h3>
+                    <p class="cert-issuer">IEEE PES SBC COET (2023)</p>
+                    <p class="cert-date">Explored sustainable energy solutions and green technology innovations</p>
+                    <a href="https://www.linkedin.com/posts/abhay-m-98710b287_ieeepesday2023-sustainability-renewableenergy-activity-7233838723652599808-sE_M?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEWbC7cBfgtIK_IbFg7C9bpnQ5R5JoBAg9M" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">Certificate of Excellence - Tech-Trek at AGNITUS '23</h3>
+                    <p class="cert-issuer">National Level Tech Fest</p>
+                    <p class="cert-date">Participated in technical and problem-solving events</p>
+                    <a href="https://www.linkedin.com/posts/abhay-m-98710b287_techtrek-agnitus23-engineering-activity-7233838153638260738-RJlf?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEWbC7cBfgtIK_IbFg7C9bpnQ5R5JoBAg9M" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="cert-card">
+                    <h3 class="cert-title">90-day UI Engineering Internship</h3>
+                    <p class="cert-issuer">IMIOT Technolabs LLP (2023)</p>
+                    <p class="cert-date">Developed responsive web designs using HTML, CSS, and JavaScript</p>
+                    <a href="https://www.linkedin.com/posts/abhay-m-98710b287_certificate-of-experience-activity-7204845483016486915-Qrb5?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEWbC7cBfgtIK_IbFg7C9bpnQ5R5JoBAg9M" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="professional-experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience & IEEE Involvement</h2>
+            <p class="section-subtitle">Leadership, teamwork, and contributions</p>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2025 - Present</div>
+                    <h3 class="timeline-title">IEEE Design Lead</h3>
+                    <p class="timeline-organization">IEEE SB COET</p>
+                    <ul>
+                        <li>Leads UI/UX strategy and design direction for IEEE SB COET</li>
+                        <li>Collaborates with cross-functional teams to enhance user experiences</li>
+                        <li>Conducts design research and usability testing</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 - Feb 2025</div>
+                    <h3 class="timeline-title">Designer</h3>
+                    <p class="timeline-organization">IEEE SB COET</p>
+                    <ul>
+                        <li>Designed event posters, promotional materials, and UI prototypes</li>
+                        <li>Strengthened brand identity and visual storytelling</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2022 - Aug 2023</div>
+                    <h3 class="timeline-title">IEEE PES Secretary</h3>
+                    <p class="timeline-organization">IEEE SB COET</p>
+                    <ul>
+                        <li>Organized technical workshops, webinars, and energy-focused events</li>
+                        <li>Engaged with students and professionals to promote sustainable energy solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="volunteering">
+        <div class="container">
+            <h2 class="section-title">Volunteering & Hackathon Experience</h2>
+            <p class="section-subtitle">Contributions to tech communities and events</p>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <h3 class="timeline-title">IEDC National Level Hackathon - HACKATLY 3.0</h3>
+                    <p class="timeline-organization">Volunteer</p>
+                    <ul>
+                        <li>Assisted in event coordination and technical support</li>
+                        <li>Encouraged collaboration among participants</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <h3 class="timeline-title">IEEE ThinkHerHack 3.0 Hackathon</h3>
+                    <p class="timeline-organization">Volunteer</p>
+                    <ul>
+                        <li>Supported teams in brainstorming, prototyping, and pitching ideas</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <h3 class="timeline-title">NASA Space Apps Challenge</h3>
+                    <p class="timeline-organization">Online & Offline Participation</p>
+                    <ul>
+                        <li>Engaged in problem-solving for real-world space-related challenges</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 & 2024</div>
+                    <h3 class="timeline-title">AKPSC'23 & AKPSC'24</h3>
+                    <p class="timeline-organization">Engineering Conferences at RIT Kottayam & NCERC Pampadi</p>
+                    <ul>
+                        <li>Attended tech talks, hands-on workshops, and networking sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <h3 class="timeline-title">AI Workshop - Be10x</h3>
+                    <p class="timeline-organization">Participant</p>
+                    <ul>
+                        <li>Explored AI-powered automation and efficiency tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <p class="section-subtitle">Let's collaborate and create something amazing!</p>
+            
+            <div class="contact">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:abhayappu8@gmail.com">abhayappu8@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 8136977264</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/abhay-m-98710b287" target="_blank">linkedin.com/in/abhay-m-98710b287</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/abhay529" target="_blank">github.com/abhay529</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Send Message</button>
+                    </form>
+                </div>
+                <script>
+                    const form = document.getElementById('contactForm');
+
+                    // Step 2: Add an event listener for the form's "submit" event
+                    form.addEventListener('submit', function (event) {
+                        // Step 3: Prevent the form from submitting the traditional way
+                        event.preventDefault();
+
+                        // Step 4: Get the form data (optional, for demonstration)
+                        const name = document.getElementById('name').value;
+                        const email = document.getElementById('email').value;
+                        const message = document.getElementById('message').value;
+
+                        // Step 5: Log the form data to the console (for testing)
+                        console.log('Name:', name);
+                        console.log('Email:', email);
+                        console.log('Message:', message);
+
+                        // Step 6: Redirect the user to the "Email Sent" page
+                        window.location.href = 'email-sent.html';
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Abhay<span>M</span></div>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </div>
+                <p class="copyright">© 2024 Abhay M. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
